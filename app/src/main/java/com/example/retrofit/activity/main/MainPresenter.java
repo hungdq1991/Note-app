@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import com.example.retrofit.api.ApiClient;
 import com.example.retrofit.api.ApiInterface;
-import com.example.retrofit.model.Note;
+import com.example.retrofit.model.Department;
 
 import java.util.List;
 
@@ -24,10 +24,10 @@ public class MainPresenter {
         view.showLoading();
         //Request to server
         ApiInterface apiInterface = ApiClient.getApiClient().create( ApiInterface.class );
-        Call<List<Note>> call = apiInterface.getNotes();
-        call.enqueue( new Callback<List<Note>>() {
+        Call<List<Department>> call = apiInterface.getDepartment();
+        call.enqueue( new Callback<List<Department>>() {
             @Override
-            public void onResponse(@NonNull Call<List<Note>> call,@NonNull Response<List<Note>> response) {
+            public void onResponse(@NonNull Call<List<Department>> call, @NonNull Response<List<Department>> response) {
                 view.hideLoading();
                 if (response.isSuccessful() && response.body() != null) {
                     view.onGetResult( response.body() );
@@ -35,7 +35,7 @@ public class MainPresenter {
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<Note>> call,@NonNull Throwable t) {
+            public void onFailure(@NonNull Call<List<Department>> call, @NonNull Throwable t) {
                 view.hideLoading();
                 view.onErrorLoading( t.getLocalizedMessage() );
             }

@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.example.retrofit.R;
 import com.example.retrofit.activity.editor.EditorActivity;
-import com.example.retrofit.model.Note;
+import com.example.retrofit.model.Department;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements MainView{
     MainPresenter mainPresenter;
     MainAdapter mainAdapter;
     MainAdapter.ItemClickListener itemClickListener;
-    List<Note> note;
+    List<Department> departmentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements MainView{
         );
 
         itemClickListener = ((view, position) -> {
-            String title = note.get( position ).getTitle();
+            String title = departmentList.get( position ).getDepartment_code();
             Toast.makeText( this, title, Toast.LENGTH_SHORT ).show();
         });
     }
@@ -65,12 +65,12 @@ public class MainActivity extends AppCompatActivity implements MainView{
     }
 
     @Override
-    public void onGetResult(List<Note> notes) {
+    public void onGetResult(List<Department> notes) {
         mainAdapter = new MainAdapter( this, notes, itemClickListener );
         mainAdapter.notifyDataSetChanged();
         recyclerView.setAdapter( mainAdapter );
 
-        note = notes;
+        departmentList = notes;
     }
 
     @Override

@@ -11,19 +11,19 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.retrofit.R;
-import com.example.retrofit.model.Note;
+import com.example.retrofit.model.Department;
 
 import java.util.List;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.RecyclerViewAdapter> {
 
     private Context context;
-    private List<Note> notess;
+    private List<Department> notes;
     private ItemClickListener itemClickListener;
 
-    public MainAdapter(Context context, List<Note> notess, ItemClickListener itemClickListener) {
+    public MainAdapter(Context context, List<Department> notess, ItemClickListener itemClickListener) {
         this.context = context;
-        this.notess = notess;
+        this.notes = notess;
         this.itemClickListener = itemClickListener;
     }
 
@@ -37,21 +37,20 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.RecyclerViewAd
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter holder, int position) {
-        Note note = notess.get(position);
-        holder.tv_title.setText( note.getTitle() );
-        holder.tv_note.setText( note.getNote() );
-        holder.tv_date.setText( note.getDate() );
-        holder.card_item.setBackgroundColor( note.getColor() );
+        Department note = notes.get(position);
+        holder.tv_department_code.setText( note.getDepartment_code() );
+//        holder.tv_department_name.setText( note.getDepartment_name() );
     }
 
     @Override
     public int getItemCount() {
-        return notess.size();
+        return notes.size();
     }
 
     class RecyclerViewAdapter extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        TextView tv_title, tv_note, tv_date;
+//        TextView tv_department_code, tv_department_name;
+        TextView tv_department_code;
         CardView card_item;
         ItemClickListener itemClickListener;
 
@@ -59,9 +58,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.RecyclerViewAd
             super( itemView );
             this.itemClickListener = itemClickListener;
 
-            tv_title = itemView.findViewById( R.id.title );
-            tv_note = itemView.findViewById( R.id.note );
-            tv_date = itemView.findViewById( R.id.date );
+            tv_department_code = itemView.findViewById( R.id.department_code );
+//            tv_department_name = itemView.findViewById( R.id.department_name );
             card_item = itemView.findViewById( R.id.card_item );
 
             this.itemClickListener = itemClickListener;

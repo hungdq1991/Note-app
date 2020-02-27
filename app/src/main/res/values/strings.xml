@@ -4,4 +4,6 @@
     <string name="enter_a_note">Enter a note...</string>
     <string name="save">Save</string>
     <string name="date">27 February 2020</string>
+    <string name="department_code">Department code</string>
+    <string name="department_name">Department Name</string>
 </resources>
