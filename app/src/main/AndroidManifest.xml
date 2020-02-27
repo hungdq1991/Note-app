@@ -13,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".EditorActivity"
+            android:name=".activity.editor.EditorActivity"
             android:theme="@style/EditorTheme"
             android:launchMode="singleTask" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
